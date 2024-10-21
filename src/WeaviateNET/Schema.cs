@@ -88,7 +88,8 @@ namespace WeaviateNET
                 c.InvertedIndexConfig.Bm25.B = bm25indexConfig.B;
             }
             var multiTenancyConfig = pclass.GetCustomAttribute<MultiTenancyAttribute>();
-            if (multiTenancyConfig != null) c.MultiTenancyConfig.Enabled = multiTenancyConfig.Enabled;
+            if (multiTenancyConfig != null) 
+                c.MultiTenancyConfig = new MultiTenancyConfig() { Enabled = multiTenancyConfig.Enabled };
 
             var flds = PersistentFields<P>();
             c.Properties = new List<Property>(flds.Count);
